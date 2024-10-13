@@ -1,0 +1,96 @@
+<%- include("partials/header"); -%>
+<div
+  class="filters w-full flex justify-center items-center mt-3 mb-1 md:w-[80%] md:mx-2 m-auto flex-wrap"
+>
+  <div class="filter mr-4 text-center hover:opacity-[0.8]">
+    <div class="icon"><i class="fa-solid fa-fire"></i></div>
+    <p>Trending</p>
+  </div>
+  <div class="filter mr-4 text-center hover:opacity-[0.8]">
+    <div class="icon"><i class="fa-solid fa-bed"></i></div>
+    <p>Rooms</p>
+  </div>
+  <div class="filter mr-4 text-center hover:opacity-[0.8]">
+    <div class="icon"><i class="fa-solid fa-city"></i></div>
+    <p>Iconic Cities</p>
+  </div>
+  <div class="filter mr-4 text-center hover:opacity-[0.8]">
+    <div class="icon"><i class="fa-solid fa-mountain"></i></div>
+    <p>Mountains</p>
+  </div>
+  <div class="filter mr-4 text-center hover:opacity-[0.8]">
+    <div class="icon"><i class="fa-brands fa-fort-awesome"></i></div>
+    <p>Castles</p>
+  </div>
+  <div class="filter mr-4 text-center hover:opacity-[0.8]">
+    <div class="icon"><i class="fa-solid fa-person-swimming"></i></div>
+    <p>Amazing Pools</p>
+  </div>
+  <div class="filter mr-4 text-center hover:opactity[0.8]">
+    <div class="icon"><i class="fa-solid fa-campground"></i></div>
+    <p>Camping</p>
+  </div>
+  <div class="filter mr-4 text-center sm:hidden hover:opactity[0.8]">
+    <div class="icon"><i class="fa-solid fa-cow"></i></div>
+    <p>Farms</p>
+  </div>
+  <div class="filter mr-4 text-center sm:hidden hover:opactity[0.8]">
+    <div class="icon"><i class="fa-solid fa-snowflake"></i></div>
+    <p>Arctic</p>
+  </div>
+  <div class="taxToggle border-2 rounded-md px-2 py-1 ml-auto hidden md:block">
+    <div class="form-check form-check-reverse form-switch">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        role="switch"
+        id="flexSwitchCheckChecked"
+        checked
+      />
+      <label class="form-check-label" for="flexSwitchCheckChecked"
+        >Display total after taxes</label
+      >
+    </div>
+  </div>
+</div>
+<div
+  class="cards w-full flex justify-center items-center flex-wrap gap-[19px] px-[30px] my-4"
+>
+  <% if(listing.length > 0){ %> <% listing.forEach((list) => { %>
+  <a href="/listings/<%= list._id %>">
+    <div
+      class="card w-[320px] md:w-[270px] h-[320px] rounded-md overflow-hidden cursor-pointer"
+    >
+      <img
+        class="show-img w-full h-[230px] object-cover rounded-md"
+        src="<%= list.image.url %>"
+        alt="listing image"
+      />
+      <div class="card-text py-1 px-2">
+        <b class="capitalize no-underline text-xl"><%= list.title %></b>
+        <h2 class="text-[#008080] no-underline">
+          ₨ <%= list.price.toLocaleString("en-PK") %>/ night
+          <i class="taxInfo hidden"> +18% GSt</i>
+        </h2>
+      </div>
+    </div>
+  </a>
+  <% }) %> <% }else { %>
+  <p>No listings found based on your search criteria.</p>
+  <% } %>
+</div>
+<%- include("partials/footer"); -%>
+
+<script>
+  const taxSwitch = document.getElementById("flexSwitchCheckChecked");
+  taxSwitch.addEventListener("click", () => {
+    let taxInfo = document.getElementsByClassName("taxInfo");
+    for (info of taxInfo) {
+      if (info.style.display != "inline") {
+        info.style.display = "inline";
+      } else {
+        info.style.display = "none";
+      }
+    }
+  });
+</script>

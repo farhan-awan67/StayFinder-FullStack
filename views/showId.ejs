@@ -1,0 +1,109 @@
+<%- include("partials/header"); -%>
+<script>
+  const mapToken = "<%= process.env.MAP_TOKEN %>";
+  const coordinates = <%- JSON.stringify(listId.geometry.coordinates) %>;
+</script>
+<main class="w-full flex items-center flex-col px-4">
+  <div
+    class="card w-full max-w-[500px] rounded-md overflow-hidden cursor-pointer my-8"
+  >
+    <img
+      class="show-img w-full h-[220px] object-cover rounded-md"
+      src="<%= listId.image.url %>"
+      alt="listing image"
+    />
+    <div class="card-text py-2 px-2">
+      <!-- <h1><%= listId.owner.username %></h1> -->
+      <b class="text-[22px] capitalize"><%= listId.title %></b>
+      <h2 class="mt-2"><%= listId.description %></h2>
+      <h2 class="mt-2">₨ <%= listId.price.toLocaleString("en-PK") %></h2>
+      <h2 class="mt-2"><%= listId.location %></h2>
+      <h2 class="mt-2"><%= listId.country %></h2>
+    </div>
+    <% if(currUser && currUser._id.equals(listId.owner._id)){ %>
+    <div class="btns">
+      <a
+        class="bg-black text-white rounded-md px-2 py-2 mt-2 inline-block"
+        href="/listings/<%= listId._id%>/edit"
+        >Edit Listing</a
+      >
+      <a
+        class="bg-red-600 text-white rounded-md px-2 py-2 mt-2 ml-2 inline-block"
+        href="/listings/<%= listId._id%>/delete"
+        >Delete Listing</a
+      >
+    </div>
+    <% } %>
+  </div>
+  <hr />
+  <% if(currUser){ %>
+  <h2 class="text-[20px] font-bold">Leave a Reviews</h2>
+  <form
+    action="/listings/<%= listId._id %>/reviews"
+    method="post"
+    class="w-full max-w-[500px] flex items-center flex-col mb-4 needs-validation"
+    novalidate
+  >
+    <div class="w-full mb-[8px]">
+      <label class="text-[18px] text-left" for="review">Rating</label>
+      <fieldset class="starability-slot w-full">
+        <input
+          type="radio"
+          id="no-rate"
+          class="input-no-rate"
+          name="reviews[rating]"
+          value="1"
+          checked
+          aria-label="No rating."
+        />
+        <input type="radio" id="first-rate1" name="reviews[rating]" value="1" />
+        <label for="first-rate1" title="Terrible">1 star</label>
+        <input type="radio" id="first-rate2" name="reviews[rating]" value="2" />
+        <label for="first-rate2" title="Not good">2 stars</label>
+        <input type="radio" id="first-rate3" name="reviews[rating]" value="3" />
+        <label for="first-rate3" title="Average">3 stars</label>
+        <input type="radio" id="first-rate4" name="reviews[rating]" value="4" />
+        <label for="first-rate4" title="Very good">4 stars</label>
+        <input type="radio" id="first-rate5" name="reviews[rating]" value="5" />
+        <label for="first-rate5" title="Amazing">5 stars</label>
+      </fieldset>
+    </div>
+    <div class="w-full mb-[8px]">
+      <label class="text-[18px]" for="comment">Comments</label>
+      <textarea
+        class="w-full border-2 border-black px-2 py-[5px] rounded-md mb-2 form-control"
+        type="text"
+        name="reviews[comment]"
+        placeholder="comments"
+        id="comment"
+        cols="20"
+        required
+      ></textarea>
+    </div>
+    <button class="bg-blue-700 rounded-md px-2 py-2 text-white">Submit</button>
+  </form>
+  <% } %> 
+  <% if(listId.reviews.length > 0){ %>
+  <h4 class="font-bold my-2">All Reviews</h4>
+  <div class="list-disc w-full max-w-[500px] flex flex-wrap gap-2 my-2">
+    <% for(let review of listId.reviews){ %>
+    <div class="card w-[45%] p-2">
+      <h2><b>@<%= review.author.username %></b></h2>
+      <p class="starability-result" data-rating="<%= review.rating%>"></p>
+      <p class="my-1"><%= review.comment %></p>
+      <form
+        method="post"
+        action="/listings/<%= listId._id %>/reviews/<%= review._id %>?_method=DELETE"
+      >
+        <button class="text-white bg-black rounded-md py-1 px-2">Delete</button>
+      </form>
+    </div>
+    <% } %>
+  </div>
+  <% } %>
+  <div class="w-full max-w-[500px] h-[250px] mx-auto my-4">
+    <h1 class="text-left font-bold mb-1">Where You'll Be</h1>
+    <div id="map"></div>
+  </div>
+</main>
+<%- include("partials/footer"); -%>
