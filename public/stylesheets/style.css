@@ -19,7 +19,8 @@ body {
 
 .cards {
   width: 100%;
-  margin: 30px auto;
+  /* margin: 30px auto; */
+  margin: 30px auto 30px auto;
 }
 
 .show-img:hover {
@@ -56,8 +57,18 @@ body {
   #nav {
     padding: 19px 18px;
   }
-}
-
-.search {
-  display: none;
+  .filters {
+    display: none;
+  }
+  .cards {
+    width: 100%;
+    margin: 58px auto 30px auto;
+    gap: 10px;
+    padding: 15px;
+  }
+  .search {
+    margin-top: 20px;
+    padding: 10px 0;
+    text-align: center;
+  }
 }

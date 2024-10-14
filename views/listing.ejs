@@ -54,7 +54,25 @@
   </div>
 </div>
 <div
-  class="cards w-full flex justify-center items-center flex-wrap gap-[19px] px-[30px] my-4"
+  class="search w-full mt-2 mb-5 absolute md:hidden top-40 left-8 sm:flex sm:justify-center justify-center"
+>
+  <form action="/listings/search" method="get">
+    <input
+      type="text"
+      placeholder="Search by location, title or price"
+      name="query"
+      class="rounded-md border-2 px-2 py-1 outline-blue-600"
+    />
+    <button
+      class="ml-1 bg-red-700 text-white px-3 py-[5px] rounded-md"
+      type="submit"
+    >
+      Search
+    </button>
+  </form>
+</div>
+<div
+  class="cards w-full flex justify-center items-center flex-wrap gap-[19px] px-[30px] mt-9"
 >
   <% if(listing.length > 0){ %> <% listing.forEach((list) => { %>
   <a href="/listings/<%= list._id %>">
