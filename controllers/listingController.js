@@ -12,6 +12,7 @@ const getListings = async (req, res, next) => {
   try {
     const listing = await Listing.find({});
     res.render("listing", { listing, query: "" });
+    res.redirect("/listings");
   } catch (err) {
     next(err);
   }
