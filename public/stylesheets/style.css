@@ -71,7 +71,11 @@ body {
   .search-head {
     display: none;
   }
+}
+
+
+@media screen and (max-width: 336px) {
   .search{
-    gap: 8px;
+    top: 58px;
   }
 }
