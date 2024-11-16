@@ -71,4 +71,7 @@ body {
   .search-head {
     display: none;
   }
+  .search{
+    gap: 8px;
+  }
 }
