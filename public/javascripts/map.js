@@ -8,7 +8,6 @@ const map = new mapboxgl.Map({
   center: coordinates,
 });
 
-// console.log(coordinates);
 const marker1 = new mapboxgl.Marker()
   .setLngLat(coordinates) //listing geometry co ordinates
   .addTo(map);

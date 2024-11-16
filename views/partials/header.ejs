@@ -24,21 +24,22 @@
     />
     <link rel="stylesheet" href="/stylesheets/output.css" />
     <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script src="../javascripts/map.js" defer></script>
   </head>
   <body>
     <header
       class="w-full px-2 md:px-3 py-1.5 flex items-center justify-between gap-[15px] border-bottom border-2"
     >
-      <a href="/"
-        ><i class="fa-regular fa-compass text-[40px] text-black"></i
-      ></a>
-      <div class="nav-links text-[17px]">
+    <a href="/listings"
+      ><i class="fa-regular fa-compass text-[40px] text-black"></i
+    ></a>
+    <div class="nav-links text-[17px]">
         <a class="md:ml-1 ml-auto text-black no-underline" href="/listings"
           >Explore</a
         >
       </div>
       <div
-        class="search m-auto hidden sm:flex sm:justify-center md:block justify-center"
+        class="search-head mx-auto hidden sm:flex sm:justify-end md:block items-end"
       >
         <form action="/listings/search" method="get">
           <input
@@ -59,7 +60,7 @@
         id="nav"
         class="nav-links bg-white text-[17px] py-3 md:p-0 md:ml-auto absolute top-0 left-[-60%] h-screen flex flex-col gap-2 transition-transform duration-300 ease-in-out md:static md:flex-row md:left-0 md:h-auto z-10"
       >
-        <a class="mr-1 text-black no-underline" href="/listings/newlist"
+        <a class=" text-black no-underline" href="/listings/newlist"
           >Add New Listing</a
         >
         <% if(!currUser){ %>
@@ -81,7 +82,7 @@
     </header>
     <% if(success && success.length){ %>
     <div
-      class="alert alert-success alert-dismissible fade show w-[30%] m-auto mt-1"
+      class="alert alert-success alert-dismissible fade show w-[90%] sm:w-[300px] md:w-[300px] m-auto mt-1 z-10"
       role="alert"
     >
       <symbol id="check-circle-fill" viewBox="0 0 16 16">
@@ -99,7 +100,7 @@
     </div>
     <% } %> <% if(error && error.length){ %>
     <div
-      class="alert alert-danger alert-dismissible fade show w-[30%] m-auto mt-1"
+      class="alert alert-danger alert-dismissible fade show w-[90%] sm:w-[250px] md:w-[300px] m-auto mt-1 z-10"
       role="alert"
     >
       <symbol id="exclamation-triangle-fill" viewBox="0 0 16 16">

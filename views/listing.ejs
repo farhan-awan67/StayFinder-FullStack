@@ -54,7 +54,7 @@
   </div>
 </div>
 <div
-  class="search w-full mt-2 mb-5 absolute md:hidden top-40 left-8 sm:flex sm:justify-center justify-center"
+  class="search w-full mt-1  absolute md:hidden top-16 left-0 text-center sm:flex sm:justify-center justify-center"
 >
   <form action="/listings/search" method="get">
     <input
@@ -83,6 +83,7 @@
         class="show-img w-full h-[230px] object-cover rounded-md"
         src="<%= list.image.url %>"
         alt="listing image"
+        loading="lazy"
       />
       <div class="card-text py-1 px-2">
         <b class="capitalize no-underline text-xl"><%= list.title %></b>

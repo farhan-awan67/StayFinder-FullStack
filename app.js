@@ -14,6 +14,7 @@ const passport = require("passport");
 const localStrategy = require("passport-local");
 const User = require("./models/userModel");
 const userRouter = require("./routes/userRoute");
+const expressError = require("./utils/expressError");
 
 const dbUrl = process.env.MONGO_URL;
 
@@ -61,10 +62,18 @@ app.use((req, res, next) => {
   next();
 });
 
-
 app.use("/listings", listingRoute);
 app.use("/listings/:id/reviews", reviewRoute);
 app.use("/", userRouter);
+
+app.all("*", (req, res, next) => {
+  next(new expressError(404, "Page not found!"));
+});
+
+// Error-handling middleware - only show the error message
+app.use((err, req, res, next) => {
+  res.status(err.statusCode || 500).send(err.message);  // Only send error message
+});
 
 app.listen(PORT, () => {
   connectDB();

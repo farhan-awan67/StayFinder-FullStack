@@ -19,7 +19,6 @@ body {
 
 .cards {
   width: 100%;
-  /* margin: 30px auto; */
   margin: 30px auto 30px auto;
 }
 
@@ -50,12 +49,15 @@ body {
 }
 
 .footer {
-  border-top: 1px solid black;
+  background-color: whitesmoke;
 }
 
 @media screen and (max-width: 768px) {
   #nav {
-    padding: 19px 18px;
+    padding: 33px 24px;
+  }
+  .nav-links{
+    gap: 40px;
   }
   .filters {
     display: none;
@@ -66,9 +68,7 @@ body {
     gap: 10px;
     padding: 15px;
   }
-  .search {
-    margin-top: 20px;
-    padding: 10px 0;
-    text-align: center;
+  .search-head {
+    display: none;
   }
 }
