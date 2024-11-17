@@ -28,7 +28,7 @@
   </head>
   <body>
     <header
-      class="w-full px-2 md:px-3 py-1.5 flex items-center justify-between gap-[15px] border-bottom border-2"
+      class="w-full px-2 py-1 sm:py-0 md:px-3 flex items-center justify-between gap-[15px] border-bottom border-2"
     >
     <a href="/listings"
       ><i class="fa-regular fa-compass text-[40px] text-black"></i
@@ -39,9 +39,9 @@
         >
       </div>
       <div
-        class="search-head mx-auto hidden sm:flex sm:justify-end md:block items-end"
+        class="search-head w-[80%] hidden sm:flex justify-center items-center"
       >
-        <form action="/listings/search" method="get">
+        <form  class="w-[80%] max-w-3xl flex justify-center items-center" action="/listings/search" method="get">
           <input
             type="text"
             placeholder="Search by location, title or price"
@@ -49,7 +49,7 @@
             class="rounded-md border-2 px-2 py-1 outline-blue-600"
           />
           <button
-            class="ml-1 bg-red-700 text-white px-3 py-[5px] rounded-md"
+            class="ml-1.5 bg-red-700 text-white px-3 py-[5px] rounded-md"
             type="submit"
           >
             Search
@@ -58,31 +58,31 @@
       </div>
       <div
         id="nav"
-        class="nav-links bg-white text-[17px] py-3 md:p-0 md:ml-auto absolute top-0 left-[-60%] h-screen flex flex-col gap-2 transition-transform duration-300 ease-in-out md:static md:flex-row md:left-0 md:h-auto z-10"
+        class="nav-links bg-white text-[17px] py-3 md:p-0 md:ml-auto absolute left-0 top-[-110%] right-0 h-screen flex flex-col gap-2 transition-transform duration-300 ease-in-out md:static md:flex-row md:left-0 md:h-auto z-10"
       >
-        <a class=" text-black no-underline" href="/listings/newlist"
+        <a class="text-black no-underline leading-tight tracking-tight" href="/listings/newlist"
           >Add New Listing</a
         >
         <% if(!currUser){ %>
-        <a href="/signup" class="text-black no-underline"><b>Sign up</b></a>
+        <a href="/signup" class="text-black no-underline tracking-tight"><b>Signup</b></a>
         <a class="md:ml-1 text-black no-underline" href="/login"
           ><b>Login</b></a
         >
         <% } %> <% if(currUser){ %>
-        <a class="md:ml-1 text-black no-underline" href="/logout"
+        <a class="md:ml-1 text-black no-underline tracking-tight" href="/logout"
           ><b>log out</b></a
         >
         <% } %>
       </div>
       <i
         id="menu"
-        class="fa-solid fa-bars fa-fw ml-auto block md:hidden text-xl"
+        class="fa-solid fa-bars fa-fw ml-auto block md:hidden text-xl cursor-pointer"
       ></i>
-      <i id="close" class="fa-solid fa-xmark fa-fw hidden text-lg"></i>
+      <i id="close" class="fa-solid fa-xmark fa-fw hidden text-lg cursor-pointer"></i>
     </header>
     <% if(success && success.length){ %>
     <div
-      class="alert alert-success alert-dismissible fade show w-[90%] sm:w-[300px] md:w-[300px] m-auto mt-1 z-10"
+      class="alert alert-success alert-dismissible fade show w-[90%] sm:w-[300px] md:w-[310px] m-auto mt-1 z-10"
       role="alert"
     >
       <symbol id="check-circle-fill" viewBox="0 0 16 16">
@@ -100,7 +100,7 @@
     </div>
     <% } %> <% if(error && error.length){ %>
     <div
-      class="alert alert-danger alert-dismissible fade show w-[90%] sm:w-[250px] md:w-[300px] m-auto mt-1 z-10"
+      class="alert alert-danger alert-dismissible fade show w-[90%] sm:w-[250px] md:w-[310px] m-auto mt-1 z-10"
       role="alert"
     >
       <symbol id="exclamation-triangle-fill" viewBox="0 0 16 16">

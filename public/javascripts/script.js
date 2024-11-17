@@ -5,13 +5,13 @@ let nav = document.getElementById("nav");
 menu.addEventListener("click", () => {
   menu.style.display = "none";
   close.style.display = "block";
-  nav.style.left = "0";
+  nav.style.top = "8%";
 });
 
 close.addEventListener("click", () => {
   menu.style.display = "block";
   close.style.display = "none";
-  nav.style.left = "-60%";
+  nav.style.top = "-110%";
 });
 
 async function performSearch(event) {
@@ -19,17 +19,13 @@ async function performSearch(event) {
 
   const query = document.getElementById("search-input").value.trim();
   console.log(query);
-  // const response = await fetch(
-  //   `/api/listings?search=${encodeURIComponent(query)}`
-  // );
-  // const results = await response.json();
+
   if (!query) {
     console.log("Search query is empty."); // Handle empty input
     return;
   }
 
   const response = await fetch(`/listings?search=${encodeURIComponent(query)}`);
-  // console.log(response);
   const text = await response.text(); // Get response as text
 
   console.log(text); // Log the raw HTML response
@@ -38,8 +34,6 @@ async function performSearch(event) {
     console.error("Error fetching results:", response.statusText);
     return;
   }
-
-  // const results = await response.json();
   const results = JSON.parse(text); // Try parsing if it seems like valid JSON
   console.log("Search Results:", results); // Log the results
 
@@ -78,14 +72,3 @@ function displayResults(results) {
     resultsContainer.appendChild(listingDiv);
   });
 }
-
-// function displayResults(results) {
-//   const resultsContainer = document.getElementById("results");
-//   resultsContainer.innerHTML = "";
-
-//   results.forEach((item) => {
-//     const listingDiv = document.createElement("div");
-//     listingDiv.textContent = `${item.name} - ${item.description}`;
-//     resultsContainer.appendChild(listingDiv);
-//   });
-// }

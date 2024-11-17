@@ -16,9 +16,9 @@
       <!-- <h1><%= listId.owner.username %></h1> -->
       <b class="text-[22px] capitalize"><%= listId.title %></b>
       <h2 class="mt-2"><%= listId.description %></h2>
-      <h2 class="mt-2">₨ <%= listId.price.toLocaleString("en-PK") %></h2>
-      <h2 class="mt-2"><%= listId.location %></h2>
-      <h2 class="mt-2"><%= listId.country %></h2>
+      <h2 class="mt-2 font-semibold">₨ <%= listId.price.toLocaleString("en-PK") %></h2>
+      <h2 class="mt-2 font-semibold"><%= listId.location %></h2>
+      <h2 class="mt-2 font-semibold"><%= listId.country %></h2>
     </div>
     <% if(currUser && currUser._id.equals(listId.owner._id)){ %>
     <div class="btns">
@@ -85,9 +85,9 @@
   <% } %> 
       <% if(listId.reviews.length > 0){ %>
   <h4 class="font-bold my-2">All Reviews</h4>
-  <div class="list-disc w-full max-w-[500px] flex flex-wrap gap-2 my-2">
+  <div class="list-disc w-full max-w-[500px] flex flex-wrap justify-evenly gap-2 my-2">
     <% for(let review of listId.reviews){ %>
-    <div class="card w-[45%] p-2">
+    <div class="card min-w-[164px] w-[45%] p-2">
       <h2><b>@<%= review.author.username %></b></h2>
       <p class="starability-result" data-rating="<%= review.rating%>"></p>
       <p class="my-1"><%= review.comment %></p>
