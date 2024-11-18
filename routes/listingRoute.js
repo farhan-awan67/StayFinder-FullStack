@@ -11,6 +11,7 @@ const {
   searchListing,
 } = require("../controllers/listingController");
 const errorHandling = require("../middlewares/errorHandling");
+const expressError = require("../utils/expressError");
 const { validateSchema } = require("../validateSchema");
 const { isLoggedIn, isAuthorized } = require("../middleware");
 const multer = require("multer");
@@ -21,11 +22,11 @@ const listingValidation = (req, res, next) => {
   const result = validateSchema.validate(req.body);
   if (result.error) {
     throw new expressError(500, result.error);
-    // console.log(result.error.message);
   } else {
     next();
   }
 };
+
 
 router.get("/", getListings);
 router.get("/newlist", isLoggedIn, newList);
@@ -41,8 +42,8 @@ router.post(
 router.get("/:id/edit", isLoggedIn, isAuthorized, editList);
 router.put(
   "/:id/update",
-  listingValidation,
   upload.single("listing[image]"),
+  listingValidation,
   isAuthorized,
   updateList
 );

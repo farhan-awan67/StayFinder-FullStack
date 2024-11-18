@@ -30,18 +30,18 @@
     <header
       class="w-full px-2 py-1 sm:py-0 md:px-3 flex items-center justify-between gap-[15px] border-bottom border-2"
     >
-    <a href="/listings"
-      ><i class="fa-regular fa-compass text-[40px] text-black"></i
-    ></a>
-    <div class="nav-links text-[17px]">
-        <a class="md:ml-1 ml-auto text-black no-underline" href="/listings"
+    <div class="nav text-[17px] flex justify-center items-center gap-1">
+      <a href="/listings"
+        ><i class="fa-regular fa-compass text-[40px] text-black"></i
+      ></a>
+        <a class="text-black no-underline" href="/listings"
           >Explore</a
         >
       </div>
       <div
-        class="search-head w-[80%] hidden sm:flex justify-center items-center"
+        class="search-head w-[70%] hidden sm:flex justify-center items-center"
       >
-        <form  class="w-[80%] max-w-3xl flex justify-center items-center" action="/listings/search" method="get">
+        <form  class="w-[70%] max-w-3xl flex justify-center items-center" action="/listings/search" method="get">
           <input
             type="text"
             placeholder="Search by location, title or price"
@@ -58,18 +58,18 @@
       </div>
       <div
         id="nav"
-        class="nav-links bg-white text-[17px] py-3 md:p-0 md:ml-auto absolute left-0 top-[-110%] right-0 h-screen flex flex-col gap-2 transition-transform duration-300 ease-in-out md:static md:flex-row md:left-0 md:h-auto z-10"
+        class="nav-links bg-white text-[17px] py-3 md:p-0 md:ml-auto absolute left-0 top-[-110%] right-0 h-screen flex flex-col items-center gap-2 transition-transform duration-300 ease-in-out md:static md:flex-row md:left-0 md:h-auto z-10"
       >
-        <a class="text-black no-underline leading-tight tracking-tight" href="/listings/newlist"
-          >Add New Listing</a
+        <a class="text-black no-underline leading-tight inline-block tracking-tighter w-full" href="/listings/newlist"
+          >New Listing</a
         >
         <% if(!currUser){ %>
-        <a href="/signup" class="text-black no-underline tracking-tight"><b>Signup</b></a>
+        <a href="/signup" class="text-black no-underline tracking-tighter"><b>Signup</b></a>
         <a class="md:ml-1 text-black no-underline" href="/login"
           ><b>Login</b></a
         >
         <% } %> <% if(currUser){ %>
-        <a class="md:ml-1 text-black no-underline tracking-tight" href="/logout"
+        <a class="md:ml-1 text-black no-underline tracking-tighter" href="/logout"
           ><b>log out</b></a
         >
         <% } %>

@@ -79,6 +79,7 @@ const editList = async (req, res, next) => {
     );
     res.render("edit", { findList, originalImageUrl });
   } catch (err) {
+    console.log(err)
     next(err);
   }
 };
@@ -96,6 +97,7 @@ const updateList = async (req, res, next) => {
     }
     await updateList.save();
     req.flash("success", "listing Updated successfully");
+
     res.redirect(`/listings/${findId}`);
   } catch (err) {
     next(err);

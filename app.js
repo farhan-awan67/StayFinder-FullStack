@@ -71,9 +71,15 @@ app.all("*", (req, res, next) => {
 });
 
 // Error-handling middleware - only show the error message
-app.use((err, req, res, next) => {
-  res.status(err.statusCode || 500).send(err.message);  // Only send error message
-});
+// app.use((err, req, res, next) => {
+//   // Check if headers have already been sent
+//   if (res.headersSent) {
+//     return next(err); // If headers are already sent, delegate to default error handler
+//   }
+
+//   // If headers haven't been sent, send the error response
+//   res.status(err.statusCode || 500).send(err.message);
+// });
 
 app.listen(PORT, () => {
   connectDB();

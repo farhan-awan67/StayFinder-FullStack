@@ -11,7 +11,6 @@ const errorHandling = require("../middlewares/errorHandling");
 const passport = require("passport");
 const { saveRedirectUrl } = require("../middleware");
 
-router.use(errorHandling);
 
 router.get("/signup", signUser);
 router.post("/signup", signedUser);
@@ -26,5 +25,7 @@ router.post(
   userLogin
 );
 router.get("/logout", logoutUser);
+
+router.use(errorHandling);
 
 module.exports = router;
