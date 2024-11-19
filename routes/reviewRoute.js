@@ -14,9 +14,8 @@ const reviewsValidation = (req, res, next) => {
   next();
 };
 
-
 router.post("/", reviewsValidation, isLoggedIn, addReview);
-router.delete("/:reviewId", isLoggedIn, isReviewOwner, deleteReview);
+router.delete("/:reviewId", isReviewOwner, deleteReview);
 
 router.use(errorHandling);
 

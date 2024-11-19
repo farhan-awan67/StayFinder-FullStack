@@ -11,7 +11,7 @@ const addReview = async (req, res, next) => {
     listing.reviews.push(newReview);
     await listing.save();
     await newReview.save();
-    req.flash("success", "Review add successfully");
+    req.flash("success", "Review added successfully");
     res.redirect(`/listings/${findId}`);
   } catch (err) {
     next(err);
